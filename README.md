@@ -160,85 +160,7 @@ a = np.array([5,10,15,20])
 a[a > 10]
 # [15 20]
 ```
-One Complete Pandas Example
 
-This example combines the important Pandas concepts into a simple data preprocessing workflow.
-
-Complete Example
-
-import pandas as pd
-
-# Create dataset
-df = pd.DataFrame({
-    "Name": ["Ram", "Sita", "Hari", "John", "Alex"],
-    "Age": [20, 21, None, 23, 22],
-    "Marks": [80, 90, 75, None, 85]
-})
-
-# Understand dataset
-print(df.head())
-print(df.info())
-print(df.describe())
-
-# Check missing values
-print(df.isnull().sum())
-
-# Fill missing values
-df["Age"] = df["Age"].fillna(df["Age"].mean())
-df["Marks"] = df["Marks"].fillna(df["Marks"].mean())
-
-# Add new column
-df["Pass"] = df["Marks"] >= 40
-
-# Filter students
-top_students = df[df["Marks"] >= 80]
-
-# Sort
-df = df.sort_values("Marks", ascending=False)
-
-print(df)
-
-Concepts Covered
-
-This small program demonstrates:
-
-Creating a Pandas DataFrame
-
-Viewing the first rows with head()
-
-Understanding dataset structure with info()
-
-Getting statistical information with describe()
-
-Checking missing values with isnull().sum()
-
-Filling missing values with fillna()
-
-Creating a new column
-
-Filtering rows
-
-Sorting data
-
-Basic Data Preprocessing Workflow
-
-Create / Load Dataset
-        ↓
-Understand Dataset
-        ↓
-Check Missing Values
-        ↓
-Clean Data
-        ↓
-Create / Modify Features
-        ↓
-Filter Data
-        ↓
-Sort / Analyze Data
-        ↓
-Prepare Data for Machine Learning
-
-Key Point: This is a simple example, but it covers a large part of the basic Pandas data preprocessing workflow used before applying Machine Learning algorithms.
 ---
 
 # 🐼 Pandas Short Notes
@@ -658,3 +580,84 @@ For AI/ML preparation, follow this order:
 **NumPy → Pandas → Matplotlib → Data Preprocessing → Scikit-learn → ML Algorithms**
 
 You don't need to master every NumPy/Pandas function before moving ahead. Practice the commands marked ⭐⭐⭐ and use them on a real CSV dataset.
+
+# 🎯 One Complete Pandas Example 🎯
+
+
+This example combines the important Pandas concepts into a simple data preprocessing workflow.
+
+Complete Example
+
+import pandas as pd
+
+# Create dataset
+df = pd.DataFrame({
+    "Name": ["Ram", "Sita", "Hari", "John", "Alex"],
+    "Age": [20, 21, None, 23, 22],
+    "Marks": [80, 90, 75, None, 85]
+})
+
+# Understand dataset
+print(df.head())
+print(df.info())
+print(df.describe())
+
+# Check missing values
+print(df.isnull().sum())
+
+# Fill missing values
+df["Age"] = df["Age"].fillna(df["Age"].mean())
+df["Marks"] = df["Marks"].fillna(df["Marks"].mean())
+
+# Add new column
+df["Pass"] = df["Marks"] >= 40
+
+# Filter students
+top_students = df[df["Marks"] >= 80]
+
+# Sort
+df = df.sort_values("Marks", ascending=False)
+
+print(df)
+
+Concepts Covered
+
+This small program demonstrates:
+
+Creating a Pandas DataFrame
+
+Viewing the first rows with head()
+
+Understanding dataset structure with info()
+
+Getting statistical information with describe()
+
+Checking missing values with isnull().sum()
+
+Filling missing values with fillna()
+
+Creating a new column
+
+Filtering rows
+
+Sorting data
+
+Basic Data Preprocessing Workflow
+
+Create / Load Dataset
+        ↓
+Understand Dataset
+        ↓
+Check Missing Values
+        ↓
+Clean Data
+        ↓
+Create / Modify Features
+        ↓
+Filter Data
+        ↓
+Sort / Analyze Data
+        ↓
+Prepare Data for Machine Learning
+
+Key Point: This is a simple example, but it covers a large part of the basic Pandas data preprocessing workflow used before applying Machine Learning algorithms.
