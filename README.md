@@ -148,117 +148,97 @@ np.random.seed(42)           # Reproducible results
 
 ## 9. Filtering ⭐
 
+```python
+a[a > 10]
 ```
----
 
-## 1. NumPy Reference (`import numpy as np`)
-
-### Array Creation
-- `np.array([1, 2, 3])` — Create a 1D array from a list.
-- `np.zeros((3, 3))` — Create a $3 \times 3$ array populated with zeros.
-- `np.ones((2, 4))` — Create a $2 \times 4$ array populated with ones.
-- `np.arange(0, 10, 2)` — Generate an array across an interval with a specified step size (`[0, 2, 4, 6, 8]`).
-- `np.linspace(0, 1, 5)` — Generate 5 evenly spaced float values between 0 and 1.
-- `np.random.rand(2, 2)` — Create a $2 \times 2$ array of uniform random values between 0 and 1.
-
-### Array Manipulation & Inspection
-- `arr.shape` — Return a tuple showing the array dimensions.
-- `arr.dtype` — Inspect the data type of array elements.
-- `arr.reshape(2, 5)` — Change array dimensions without altering underlying data.
-- `arr.flatten()` — Collapse a multi-dimensional array into 1D.
-- `np.concatenate([a, b], axis=0)` — Join arrays along a specified axis.
-
-### Math & Statistics
-- `arr.sum(axis=0)` / `arr.mean()` — Compute sum or mean (column-wise when `axis=0`).
-- `arr.min()` / `arr.max()` — Find minimum and maximum elements.
-- `arr.std()` — Calculate standard deviation.
-- `np.dot(a, b)` — Compute matrix/vector dot product.
-- `arr > 5` — Element-wise boolean comparison and masking.
-
----
-
-## 2. Pandas Reference (`import pandas as pd`)
-
-### Data Ingestion & Creation
-- `pd.DataFrame({'A': [1, 2], 'B': [3, 4]})` — Construct a DataFrame from a dictionary.
-- `pd.read_csv('file.csv')` — Ingest data from a CSV file.
-- `pd.read_excel('file.xlsx')` — Ingest data from an Excel spreadsheet.
-- `df.to_csv('output.csv', index=False)` — Export DataFrame to a CSV file without row indices.
-
-### Exploration & Inspection
-- `df.head(n)` / `df.tail(n)` — Inspect first/last $n$ rows (default is 5).
-- `df.info()` — Display column types, memory usage, and non-null entry counts.
-- `df.describe()` — Output summary statistics (count, mean, std, min, percentiles, max) for numeric columns.
-- `df.shape` — Return row and column counts as a tuple `(rows, cols)`.
-- `df['col'].value_counts()` — Count occurrences of each unique value in a Series.
-
-### Selection & Filtering
-- `df['col']` — Select a single column (returns a Series).
-- `df[['col1', 'col2']]` — Select multiple columns (returns a DataFrame).
-- `df.loc[0:5, 'col1']` — Label-based slicing and indexing (inclusive).
-- `df.iloc[0:5, 0:2]` — Integer position-based indexing and slicing.
-- `df[df['age'] > 25]` — Filter rows based on a boolean condition.
-
-### Data Cleaning & Aggregation
-- `df.dropna()` — Drop rows containing missing (`NaN`) values.
-- `df.fillna(value)` — Impute missing values with a scalar or computed metric.
-- `df.drop(columns=['col1'])` — Remove specified column(s).
-- `df.rename(columns={'old': 'new'})` — Rename columns with a mapping dictionary.
-- `df.groupby('category')['value'].mean()` — Group by unique keys and compute aggregates.
-- `pd.merge(df1, df2, on='id', how='inner')` — Execute SQL-style table joins.
-
----
-
-## 34. One Complete Example
-
-Here is a small example that combines the core concepts: creating a dataset, inspecting it, handling missing values, creating derived columns, filtering, and sorting.
+Example:
 
 ```python
+a = np.array([5,10,15,20])
+
+a[a > 10]
+# [15 20]
+```
+One Complete Pandas Example
+
+This example combines the important Pandas concepts into a simple data preprocessing workflow.
+
+Complete Example
+
 import pandas as pd
 
-# 1. Create dataset
+# Create dataset
 df = pd.DataFrame({
     "Name": ["Ram", "Sita", "Hari", "John", "Alex"],
     "Age": [20, 21, None, 23, 22],
     "Marks": [80, 90, 75, None, 85]
 })
 
-# 2. Understand dataset
-print("--- First 5 Rows ---")
+# Understand dataset
 print(df.head())
-
-print("\n--- Dataset Info ---")
 print(df.info())
-
-print("\n--- Statistical Summary ---")
 print(df.describe())
 
-# 3. Check missing values
-print("\n--- Missing Value Count ---")
+# Check missing values
 print(df.isnull().sum())
 
-# 4. Fill missing values (mean imputation)
+# Fill missing values
 df["Age"] = df["Age"].fillna(df["Age"].mean())
 df["Marks"] = df["Marks"].fillna(df["Marks"].mean())
 
-# 5. Add new column (conditional logic)
+# Add new column
 df["Pass"] = df["Marks"] >= 40
 
-# 6. Filter students
+# Filter students
 top_students = df[df["Marks"] >= 80]
-print("\n--- Top Students (Marks >= 80) ---")
-print(top_students)
 
-# 7. Sort by marks descending
+# Sort
 df = df.sort_values("Marks", ascending=False)
 
-print("\n--- Final Processed DataFrame ---")
 print(df)
-```
 
-> **Summary:** This end-to-end script demonstrates a core data preprocessing workflow: ingestion/definition $\rightarrow$ structural & statistical profiling $\rightarrow$ null-value imputation $\rightarrow$ feature transformation $\rightarrow$ filtering $\rightarrow$ ordering.\n
-numpy_pandas_notes_and_example.md
-Displaying numpy_pandas_notes_and_example.md.
+Concepts Covered
+
+This small program demonstrates:
+
+Creating a Pandas DataFrame
+
+Viewing the first rows with head()
+
+Understanding dataset structure with info()
+
+Getting statistical information with describe()
+
+Checking missing values with isnull().sum()
+
+Filling missing values with fillna()
+
+Creating a new column
+
+Filtering rows
+
+Sorting data
+
+Basic Data Preprocessing Workflow
+
+Create / Load Dataset
+        ↓
+Understand Dataset
+        ↓
+Check Missing Values
+        ↓
+Clean Data
+        ↓
+Create / Modify Features
+        ↓
+Filter Data
+        ↓
+Sort / Analyze Data
+        ↓
+Prepare Data for Machine Learning
+
+Key Point: This is a simple example, but it covers a large part of the basic Pandas data preprocessing workflow used before applying Machine Learning algorithms.
 ---
 
 # 🐼 Pandas Short Notes
